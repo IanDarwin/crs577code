@@ -17,7 +17,7 @@ import org.w3c.dom.Document;
 /**
  * A JAX-RS client NOT using the JAX-RS Client API
  */
-public class RogueClient {
+public class UrlJaxbClient {
 
 	static final String BASE_URL = "http://localhost:8080/inventory/rs/item";
 	enum Mode {TREE, JAXB};
