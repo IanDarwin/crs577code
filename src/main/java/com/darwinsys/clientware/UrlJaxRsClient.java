@@ -6,10 +6,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import javax.ws.rs.core.MediaType;
-
 /**
  * A JAX-RS client NOT using the JAX-RS Client API
+ * In fact, not using anything except Core Java APIs.
  */
 public class UrlJaxbClient {
 
@@ -19,7 +18,7 @@ public class UrlJaxbClient {
 	public static void main(String[] args) throws Exception {
 		URL url = new URL(BASE_URL + "/4");
 		final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-		connection.addRequestProperty("Accept", MediaType.APPLICATION_JSON);
+		connection.addRequestProperty("Accept", "application/json");
 		InputStream is = connection.getInputStream();
 		// Read "is" to get the response from a GET
 		BufferedReader bi = new BufferedReader(new InputStreamReader(is));
