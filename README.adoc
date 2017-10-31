@@ -1,3 +1,7 @@
 = crs577add
 
 Extra code for Learning Tree Course 577
+
+UrlJaxRsClient - JAX-RS client using only core Java apis
+
+SimpleSslClient - Jersey SSL client with NO SSL Configuration gunk needed
