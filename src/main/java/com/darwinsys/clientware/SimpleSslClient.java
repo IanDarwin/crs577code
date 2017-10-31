@@ -12,10 +12,10 @@ public class SimpleSslClient {
 	public static void main(String[] args) {
 
 		String baseUrl = "https://oracle.com/";
-
+		System.out.println("Opening " + baseUrl + " with NO SSL Config");
 		Client client = ClientBuilder.newClient();
 
-		Response resp = client.target(baseUrl).path("/index.web").request().get();
+		Response resp = client.target(baseUrl).path("/").request().get();
 
 		System.out.println("Response was: " + resp.getStatus());
 	}
