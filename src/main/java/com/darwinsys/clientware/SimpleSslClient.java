@@ -11,7 +11,7 @@ public class SimpleSslClient {
 
 	public static void main(String[] args) {
 
-		String baseUrl = "https://darwinsys.com/";
+		String baseUrl = "https://oracle.com/";
 
 		Client client = ClientBuilder.newClient();
 
