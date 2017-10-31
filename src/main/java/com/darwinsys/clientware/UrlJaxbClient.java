@@ -1,10 +1,10 @@
 package com.darwinsys.clientware;
 
-import java.util.List;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
-import javax.xml.bind.JAXBContext;
+import javax.ws.rs.core.MediaType;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -19,32 +19,23 @@ import org.w3c.dom.Document;
  */
 public class UrlJaxbClient {
 
-	static final String BASE_URL = "http://localhost:8080/inventory/rs/item";
+	static final String BASE_URL = 
+			"http://androidcookbook.com/seam/resource/rest/recipe";
 	enum Mode {TREE, JAXB};
-	static Mode mode = Mode.JAXB;
+	static Mode mode = Mode.TREE;
 
 	public static void main(String[] args) throws Exception {
-		URL url = new URL(BASE_URL + "/all");
-		InputStream is = url.openConnection().getInputStream();
+		URL url = new URL(BASE_URL + "/4");
+		final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		connection.addRequestProperty("Accept", MediaType.APPLICATION_XML);
+		InputStream is = connection.getInputStream();
 		// Read "is" to get the response from a GET
 
-		// Either read into a Tree or into a JAXB
-		if (mode == Mode.TREE) {
-			Document tree = // DOM API
+		// Read into a DOM Tree and print to stdout
+		Document tree = // DOM API
 				DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(is);
-			Transformer tx = TransformerFactory.newInstance().newTransformer();
-			tx.setOutputProperty(OutputKeys.INDENT, "yes");
-			tx.transform(new DOMSource(tree), new StreamResult(System.out));
-		} else {
-			JAXBContext jaxb = 
-				JAXBContext.newInstance(ItemList.class, Item.class);
-			ItemList itemList = 
-				(ItemList) jaxb.createUnmarshaller().unmarshal(is);
-			List<Item> list = itemList.getItems();
-			System.out.println("Read " + list.size() + " items");
-			for (Item i : list) {
-				System.out.println(i);
-			}
-		}
+		Transformer tx = TransformerFactory.newInstance().newTransformer();
+		tx.setOutputProperty(OutputKeys.INDENT, "yes");
+		tx.transform(new DOMSource(tree), new StreamResult(System.out));
 	}
 }
