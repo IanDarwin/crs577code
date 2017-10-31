@@ -21,8 +21,6 @@ public class UrlJaxbClient {
 
 	static final String BASE_URL = 
 			"http://androidcookbook.com/seam/resource/rest/recipe";
-	enum Mode {TREE, JAXB};
-	static Mode mode = Mode.TREE;
 
 	public static void main(String[] args) throws Exception {
 		URL url = new URL(BASE_URL + "/4");
