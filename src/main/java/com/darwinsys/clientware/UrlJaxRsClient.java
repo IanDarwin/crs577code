@@ -10,7 +10,7 @@ import java.net.URL;
  * A JAX-RS client NOT using the JAX-RS Client API
  * In fact, not using anything except Core Java APIs.
  */
-public class UrlJaxbClient {
+public class UrlJaxRsClient {
 
 	static final String BASE_URL = 
 			"http://androidcookbook.com/seam/resource/rest/recipe";
