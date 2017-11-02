@@ -13,10 +13,11 @@ import java.net.URL;
 public class UrlJaxRsClient {
 
 	static final String BASE_URL = 
-			"http://androidcookbook.com/seam/resource/rest/recipe";
+		"http://androidcookbook.com/seam/resource/rest/recipe";
 
 	public static void main(String[] args) throws Exception {
-		URL url = new URL(BASE_URL + "/4");
+		final int recipeId = 4;
+		URL url = new URL(BASE_URL + "/" + recipeId);
 		final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.addRequestProperty("Accept", "application/json");
 		InputStream is = connection.getInputStream();
