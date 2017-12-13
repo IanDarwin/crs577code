@@ -75,7 +75,7 @@ public class ForexClientIT {
         catch (CurrencyLookupException e) {
             CurrencyLookupFaultDetail faultInfo = e.getFaultInfo();
             System.err.println(e.getMessage() + ": " + faultInfo.getCurrency());
-	    assertEquals(Currency.JPY.name(), faultInfo.getCurrency());
+	    assertEquals(Currency.JPY, faultInfo.getCurrency());
         } 
     }
 
