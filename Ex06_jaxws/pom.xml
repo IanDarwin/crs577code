@@ -7,8 +7,9 @@
 	<packaging>war</packaging>
 	<inceptionYear>2017</inceptionYear>
 	<!--
-	<author>Mike Woinoski</author>
-	<author>Ian Darwni</author>
+	<author>mikew - Mike Woinoski</author>
+	<author>Lak - v.lakshmanan</author>
+	<author>ian - Ian Darwin</author>
 	-->
 
 	<properties>
@@ -31,17 +32,8 @@
 			<version>${javaee.version}</version>  
 			<scope>provided</scope>
 		</dependency>
-	
 
-		<!-- JUnit -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- SLF4J -->
+		<!-- Logging with SLF4J -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -52,6 +44,23 @@
 			<artifactId>slf4j-jdk14</artifactId>
 			<version>1.7.5</version>
 		</dependency>
+
+		<!-- JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- DB for testing -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.185</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 </project>

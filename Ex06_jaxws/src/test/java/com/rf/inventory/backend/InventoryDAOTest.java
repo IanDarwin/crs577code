@@ -1,6 +1,7 @@
 package com.rf.inventory.backend;
 
 import java.util.List;
+import java.sql.Connection;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -12,6 +13,18 @@ import static org.junit.Assert.*;
  */
 public class InventoryDAOTest {
     protected InventoryDAOJDBCImpl dao;
+
+	@BeforeClass
+	public static void createTestDB() {
+		System.out.println("InventoryDAOTest.createTestDB()");
+		try {
+			Connection c = new InventoryDAOJDBCImpl().getConnection();
+			c.createStatement().executeUpdate("create table STOCK(product_id integer, quantity integer)");
+			c.close();
+		} catch (Exception e) {
+			throw new ExceptionInInitializerError(e.toString());
+		}
+	}
     
     @Before
     public void setUp() throws Exception {

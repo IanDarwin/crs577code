@@ -3,5 +3,6 @@
 This is a rewrite of the Ex6 solution. Changes:
 
 - eliminates redundant ItemList class;
+- database tests use a test database (wow - using real database for tests?);
 - outputs in JSON or XML (XML only works on RESTEasy, not Jersey, at present);
-- Mavenized project for dependency management and simpler build configuration
+- Mavenized project for dependency management and simpler build configuration.
