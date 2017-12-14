@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>crs577add</name>
+	<name>crs577add-demos</name>
 	<comment>Demo for Course 577 &quot;REST Client&quot; chapter: NOT using JAX-RS Client API</comment>
 	<projects>
 	</projects>
