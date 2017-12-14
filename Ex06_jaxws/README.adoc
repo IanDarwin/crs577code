@@ -6,3 +6,4 @@ This is a rewrite of the Ex6 solution. Changes:
 - database tests use a test database (wow - using real database for tests?);
 - outputs in JSON or XML (XML only works on RESTEasy, not Jersey, at present);
 - Mavenized project for dependency management and simpler build configuration.
+- @Consumes, @Produces on class, not on each method.
