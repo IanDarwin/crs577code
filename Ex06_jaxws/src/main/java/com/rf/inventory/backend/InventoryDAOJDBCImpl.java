@@ -22,8 +22,7 @@ import org.slf4j.LoggerFactory;
 public class InventoryDAOJDBCImpl implements InventoryDAO {
     private static final String DELETE_SQL = "DELETE from STOCK where product_id = ?";
     private static final String QUERY_SQL = "SELECT product_id,quantity FROM STOCK WHERE product_id < 3050";
-    private static final String INSERT_SQL = "INSERT into STOCK (quantity,product_id) VALUES (?,?) " +
-                                             "ON DUPLICATE KEY UPDATE quantity=?";
+    private static final String INSERT_SQL = "INSERT into STOCK (quantity,product_id) VALUES (?,?) ";
     private static final String UPDATE_SQL = "UPDATE STOCK SET quantity=? where product_id = ?";
     private Logger log = LoggerFactory.getLogger(InventoryDAOJDBCImpl.class);
     private Connection conn; // non-pooled connection
@@ -85,7 +84,6 @@ public class InventoryDAOJDBCImpl implements InventoryDAO {
             PreparedStatement insertStmt = conn.prepareStatement(INSERT_SQL);
             insertStmt.setInt(1, quantity);
             insertStmt.setInt(2, productId);
-            insertStmt.setInt(3, quantity);
             return insertStmt.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new DataException(e);

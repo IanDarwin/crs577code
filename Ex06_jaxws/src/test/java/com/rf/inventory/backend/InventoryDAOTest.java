@@ -19,7 +19,9 @@ public class InventoryDAOTest {
 		System.out.println("InventoryDAOTest.createTestDB()");
 		try {
 			Connection c = new InventoryDAOJDBCImpl().getConnection();
-			c.createStatement().executeUpdate("create table STOCK(product_id integer, quantity integer)");
+			c.createStatement().executeUpdate("create table if not exists STOCK(product_id integer, quantity integer)");
+			c.createStatement().executeUpdate("delete from STOCK");
+			c.createStatement().executeUpdate("insert into STOCK(product_id, quantity) values(3012, 123)");
 			c.close();
 		} catch (Exception e) {
 			throw new ExceptionInInitializerError(e.toString());
