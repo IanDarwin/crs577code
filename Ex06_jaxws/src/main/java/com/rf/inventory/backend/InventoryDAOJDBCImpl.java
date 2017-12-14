@@ -33,9 +33,8 @@ public class InventoryDAOJDBCImpl implements InventoryDAO {
         try {
             Properties prop = new Properties();
             // InputStream is =
-            // this.getClass().getClassLoader().getResourceAsStream("/database.properties");
             InputStream is = this.getClass().getResourceAsStream(
-                    "database.properties");
+                    "/database.properties");
             if (is == null) {
                 throw new DataException("Unable to load database.properties from CLASSPATH.");
             }
