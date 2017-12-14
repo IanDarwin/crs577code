@@ -35,6 +35,9 @@ import com.rf.inventory.backend.Item;
 // HINT: Part of this is fixed by the name of the war file and the web.xml URL mapping
 //       See slide 6-14
 @Path("/item")
+// Produces and Consumes here is easier than on every method. Is also the default :-)
+@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 public class InventoryEndpointImpl {
     private static Logger log = LoggerFactory.getLogger(InventoryEndpointImpl.class);
 
@@ -56,7 +59,6 @@ public class InventoryEndpointImpl {
     // See slide 6-15
     @GET
     @Path("/all")
-    @Produces(MediaType.APPLICATION_JSON)
     public List<Item> doGet() {
         // TODO: Implement this method by calling the DAO getItems() method
         //       method and returning its result
@@ -65,7 +67,6 @@ public class InventoryEndpointImpl {
     
     @GET
     @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
     public Item getOne(@PathParam("id") int id) {
         // TODO: Implement this method by calling the DAO getItems() method
         //       method and returning its result
@@ -114,8 +115,6 @@ public class InventoryEndpointImpl {
     // See slide 6-24
     @POST
     @Path("/")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public String doPost(Item item) throws WebApplicationException {
         if (item.getProductId() <= 0 || item.getQuantity() < 0) {
             // TODO: return an HTTP Bad Request status (400)
@@ -147,7 +146,6 @@ public class InventoryEndpointImpl {
     // and the body of the HTTP request is assigned to the parameter item.
     @PUT
     @Path("/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
     public Response doPut(@PathParam("id") int productId, Item item )
                     throws WebApplicationException {
         // ignore the productId in the XML and use the URL parameter
