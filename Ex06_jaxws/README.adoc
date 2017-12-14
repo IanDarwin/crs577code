@@ -2,8 +2,9 @@
 
 This is a rewrite of the Ex6 solution. Changes:
 
-- eliminates redundant ItemList class;
+- eliminates redundant ItemList class, just use List<Item> (N.B. Note that this
+works everywhere EXCEPT with XML on Jersey, which seems deficient);
+- i.e., outputs in JSON or XML (XML only works on RESTEasy, not Jersey, at present);
 - database tests use a test database (wow - using real database for tests?);
-- outputs in JSON or XML (XML only works on RESTEasy, not Jersey, at present);
-- Mavenized project for dependency management and simpler build configuration.
+- Mavenized project for dependency management and simpler build configuration;
 - @Consumes, @Produces on class, not on each method.
