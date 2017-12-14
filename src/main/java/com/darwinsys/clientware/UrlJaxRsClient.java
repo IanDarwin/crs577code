@@ -13,7 +13,7 @@ import java.net.URL;
 public class UrlJaxRsClient {
 
 	static final String BASE_URL = 
-		"http://androidcookbook.com/seam/resource/rest/recipe";
+		"http://androidcookbook.com/rest/recipe";
 
 	public static void main(String[] args) throws Exception {
 		final int recipeId = 4;
