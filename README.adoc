@@ -1,11 +1,16 @@
-= crs577add
+= crs577add: Extra code for https://learningtree.com/577[Learning Tree Course 577]
 
-Extra code for Learning Tree Course 577
+== Exercises
+
+* Ex04_FromWSDL - (coming soon)
+* Ex06_JAXWS - my replacement version of this exercise
+
+== Stuff in /Demos/:
 
 UrlJaxRsClient - JAX-RS client using only core Java apis
 
 SimpleSslClient - Jersey SSL client with NO SSL Configuration gunk needed
 
 store/
-   ForexClientIT - Integration Test for the Forex Client; the README file
-   talks about integration testing and running under Maven.
+
+ForexClientIT - Integration Test for the Forex Client; the README file talks about integration testing and running under Maven.
