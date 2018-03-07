@@ -1,0 +1,17 @@
+/*
+ * The W3C XML Path Language recommendation describes an "expanded name" 
+ * as a pair consisting of a namespace name and a local name: 
+ * e.g., {http://www.w3.org/2001/XMLSchema}schema
+ *
+ * BUT if you put the information from the "extended name" in the @WebService
+ * on your IMPL class, you can forget about the "expanded name" gunk 
+ * in sun-jaxws.xml (this way is also more portable).
+ */
+@WebService(
+	endpointInterface="com.rf.warehouse.generated.webapps.Stock",
+	targetNamespace="http://warehouse.rf.com/", 
+	serviceName="StockService", 
+	portName="StockPort")
+public class StockWebServiceImpl implements Stock {
+	...
+}
