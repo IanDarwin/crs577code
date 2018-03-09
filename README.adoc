@@ -2,7 +2,8 @@
 
 == Exercises
 
-* Ex04_FromWSDL - (coming soon)
+* Ex03_soap - coming soon, only IT test for now
+* Ex04_FromWSDL - coming soon; skeleton only for now
 * Ex06_JAXWS - my replacement version of this exercise
 
 == Stuff in /Demos/:
@@ -10,7 +11,3 @@
 UrlJaxRsClient - JAX-RS client using only core Java apis
 
 SimpleSslClient - Jersey SSL client with NO SSL Configuration gunk needed
-
-store/
-
-ForexClientIT - Integration Test for the Forex Client; the README file talks about integration testing and running under Maven.
