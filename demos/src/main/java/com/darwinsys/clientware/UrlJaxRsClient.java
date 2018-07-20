@@ -16,7 +16,11 @@ public class UrlJaxRsClient {
 		"http://androidcookbook.com/rest/recipe";
 
 	public static void main(String[] args) throws Exception {
+		
+		// IRL this would come from the user, or ??
 		final int recipeId = 4;
+		
+		// String concat, but ints cannot contain injection data
 		URL url = new URL(BASE_URL + "/" + recipeId);
 		final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.addRequestProperty("Accept", "application/json");
