@@ -7,10 +7,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * A JAX-WS client NOT using the JAX-WS Client API
+ * A RESTful (JAX-RS) client NOT using the JAX-RS Client API
  * In fact, not using anything except Core Java APIs.
  */
-public class UrlJaxWsClient {
+public class UrlRestClient {
 
 	static final String BASE_URL = 
 		"http://androidcookbook.com/rest/recipe";
