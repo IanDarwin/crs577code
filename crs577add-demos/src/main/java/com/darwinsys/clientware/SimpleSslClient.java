@@ -15,7 +15,7 @@ public class SimpleSslClient {
 		System.out.println("Opening HTTPS URL " + baseUrl + " with NO SSL Config");
 		Client client = ClientBuilder.newClient();
 
-		Response resp = client.target(baseUrl).path("/").request().get();
+		Response resp = client.target(baseUrl).request().get();
 
 		System.out.println("Response was: " + resp.getStatus());
 	}
