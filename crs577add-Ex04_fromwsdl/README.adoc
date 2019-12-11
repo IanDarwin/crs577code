@@ -1,0 +1,16 @@
+= Ex04
+
+== DAO
+
+The DAO (Data Access Object) is normally a good pattern.
+It separates out the data access from the rest of the application,
+making maintenance easier.
+
+The tests here, however, do not compute!
+
+They assume that they "know" what is in the standard database,
+including which records are in stock and which are not.
+
+There should be a test database, with a different "database.properties"
+file in src/test/resources, pointing to a mock JDBC driver or a
+mock database with pre-loaded values.
