@@ -1,0 +1,111 @@
+<html>
+<body>
+<h2>Hints for Exercise 6.1</h2>
+
+<h3>web.xml</h3>
+
+<font color="grey"><pre>&lt;servlet&gt;</pre></font>
+<font color="grey"><pre>    &lt;!-- TODO: use the fully-qualified name of the JAX-RS Application subclass</pre></font>
+<font color="grey"><pre>           as the value of the &lt;servlet-name&gt; element --&gt;</pre></font>
+<font color="grey"><pre>    &lt;servlet-name&gt;</font><font color="blue">com.rf.inventory.webapps.InventoryApplication</font><font color="grey">&lt;/servlet-name&gt;</pre></font>
+<font color="grey"><pre>&lt;/servlet&gt;</pre></font>
+<font color="grey"><pre>&lt;servlet-mapping&gt;</pre></font>
+<font color="grey"><pre>    &lt;!-- TODO: use the fully-qualified name of the JAX-RS Application subclass</pre></font>
+<font color="grey"><pre>           as the value of the &lt;servlet-name&gt; element --&gt;</pre></font>
+<font color="grey"><pre>    &lt;servlet-name&gt;</font><font color="blue">com.rf.inventory.webapps.InventoryApplication</font><font color="grey">&lt;/servlet-name&gt;</pre></font>
+
+<h3>Item.java</h3>
+
+<font color="grey"><pre>// TODO: Add annotation to indicate that "item" should be used as the root element of </pre></font>
+<font color="grey"><pre>//       the exchanged XML</pre></font>
+<font color="blue"><pre>@XmlRootElement</pre></font>
+<font color="grey"><pre>public class Item {</pre></font>
+<font color="grey"><pre>    ...</pre></font>
+<font color="grey"><pre>    // TODO: Add annotation to indicate that productId is an attribute </pre></font>
+<font color="grey"><pre>    //       of the item, not a child element</pre></font>
+<font color="blue"><pre>    @XmlAttribute</pre></font>
+<font color="grey"><pre>    public int getProductId() {</pre></font>
+<font color="grey"><pre>    ...</pre></font>
+<font color="grey"><pre>    // TODO: Add annotation to indicate that quantity is an attribute of item, </pre></font>
+<font color="grey"><pre>    //       not a child element</pre></font>
+<font color="blue"><pre>    @XmlAttribute</pre></font>
+<font color="grey"><pre>    public int getQuantity() {</pre></font>
+
+<h3>ItemList.java</h3>
+
+<font color="grey"><pre>// TODO: Add annotation to indicate that we will send/receive XML documents </pre></font>
+<font color="grey"><pre>//       consisting of just one ItemList </pre></font>
+<font color="blue"><pre>@XmlRootElement(name="items")</pre></font>
+<font color="grey"><pre>public class ItemList {</pre></font>
+<font color="grey"><pre>    ...</pre></font>
+<font color="grey"><pre>    // TODO: Add annotation to indicate that it will have child elements named "item" </pre></font>
+<font color="grey"><pre>    //       whose contents come out of this array list</pre></font>
+<font color="blue"><pre>    @XmlElement(name="item")</pre></font>
+
+<h3>InventoryEndpointImpl.java</h3>
+
+<font color="grey"><pre>// TODO: Specify that request URLs will all begin with </pre></font>
+<font color="grey"><pre>//       http://host:8080/inventory/rs/item  </pre></font>
+<font color="blue"><pre>@Path("/item")</pre></font>
+<font color="grey"><pre>public class InventoryEndpointImpl {</pre></font>
+<font color="grey"><pre>    ...</pre></font>
+<font color="grey"><pre>    // TODO: Add the appropriate annotations here.  </pre></font>
+<font color="blue"><pre>    @GET</pre></font>
+<font color="blue"><pre>    @Path("/all")</pre></font>
+<font color="blue"><pre>    @Produces(MediaType.APPLICATION_XML)</pre></font>
+<font color="grey"><pre>    public ItemList doGet() {</pre></font>
+<font color="grey"><pre>        // TODO: Implement this method by calling the DAO getItems() method</pre></font>
+<font color="grey"><pre>        //       method and returning its result</pre></font>
+<font color="blue"><pre>        ItemList itemList = dao.getItems();</pre></font>
+<font color="blue"><pre>        return itemList;</pre></font>
+<font color="grey"><pre>    }</pre></font>
+<font color="grey"><pre>    ...</pre></font>
+<font color="grey"><pre>    // TODO: Add the appropriate annotations here (there are 3).  </pre></font>
+<font color="blue"><pre>    @DELETE</pre></font>
+<font color="blue"><pre>    @Path("/{productId}")</pre></font>
+<font color="blue"><pre>    public Response doDelete( @PathParam("productId") int id ) {</pre></font>
+<font color="grey"><pre>        if (id &lt;= 0) {</pre></font>
+<font color="grey"><pre>            // TODO: Return back a HTTP error status</pre></font>
+<font color="blue"><pre>            return Response.serverError().build();</pre></font>
+<font color="grey"><pre>        }</pre></font>
+<font color="grey"><pre>        dao.removeItem(id);</pre></font>
+<font color="grey"><pre>        // TODO: return an HTTP status of 200 (OK)</pre></font>
+<font color="blue"><pre>        return Response.ok().build(); </pre></font>
+<font color="grey"><pre>    }</pre></font>
+<font color="grey"><pre>    ...</pre></font>
+<font color="grey"><pre>    // TODO: Add the appropriate annotations here (there are 3)  </pre></font>
+<font color="blue"><pre>    @POST </pre></font>
+<font color="blue"><pre>    @Consumes(MediaType.APPLICATION_XML)</pre></font>
+<font color="blue"><pre>    @Produces(MediaType.APPLICATION_XML)</pre></font>
+<font color="grey"><pre>    // omit @Path since it's the class' default</pre></font>
+<font color="grey"><pre>    public String doPost(Item item) throws WebApplicationException {</pre></font>
+<font color="grey"><pre>        if (item.getProductId() &lt;= 0 || item.getQuantity() &lt; 0) {</pre></font>
+<font color="grey"><pre>            // TODO: return an HTTP status of BAD_REQUEST (400)</pre></font>
+<font color="blue"><pre>            throw new WebApplicationException(Response.Status.BAD_REQUEST);</pre></font>
+<font color="grey"><pre>        }</pre></font>
+<font color="grey"><pre>        // TODO: Invoke the DAO addItem() method</pre></font>
+<font color="blue"><pre>        dao.addItem(item.getProductId(), item.getQuantity());</pre></font>
+<font color="grey"><pre>        // TODO: Return "&lt;ok/&gt;"</pre></font>
+<font color="blue"><pre>        return "&lt;ok/&gt;";</pre></font>
+<font color="grey"><pre>    }</pre></font>
+<font color="grey"><pre>    ...</pre></font>
+<font color="grey"><pre>    // TODO: Add the appropriate annotations here (there are 4)  </pre></font>
+<font color="blue"><pre>    @PUT</pre></font>
+<font color="blue"><pre>    @Path("/{productId}")</pre></font>
+<font color="blue"><pre>    @Consumes(MediaType.APPLICATION_XML) </pre></font>
+<font color="blue"><pre>    public Response doPut( @PathParam("productId") int id, Item item)</pre></font>
+<font color="grey"><pre>                    throws WebApplicationException {</pre></font>
+<font color="grey"><pre>        item.setProductId(id);</pre></font>
+<font color="grey"><pre>        if (item.getProductId() &lt;= 0 || item.getQuantity() &lt; 0) {</pre></font>
+<font color="grey"><pre>            // TODO: return an HTTP status of BAD_REQUEST (400)</pre></font>
+<font color="blue"><pre>            throw new WebApplicationException(Response.Status.BAD_REQUEST);</pre></font>
+<font color="grey"><pre>        }</pre></font>
+<font color="grey"><pre>        // TODO: use the dao to update the stock count for this item</pre></font>
+<font color="blue"><pre>        dao.updateStockCount(item.getProductId(), item.getQuantity());</pre></font>
+<font color="grey"><pre>        // TODO: return an HTTP status of Accepted (202)</pre></font>
+<font color="blue"><pre>        return Response.accepted().build();</pre></font>
+<font color="grey"><pre>    }</pre></font>
+<font color="grey"><pre>}</pre></font>
+
+</body>
+</html>
