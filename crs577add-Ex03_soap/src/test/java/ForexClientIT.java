@@ -61,13 +61,16 @@ public class ForexClientIT {
     }
 	
     @Test
-    // Not using "expected" with @Test here so
-    // we can explore the faultinfo stuff.
+    /**
+	 * Test error handling.
+	 * *Not* using the expected "expected" attribute of @Test here
+	 * deliberately, so we can explore the FaultInfo stuff.
+	 */
     public void testErrorHandling() {
         from.setValue(new BigDecimal(100));
         from.setCurrency(Currency.JPY); // unsupported currency
         
-        try {
+        try { // See above for why we use explicit 'try' inside @Test
             System.out.println("Attempting to convert JPY to EUR:");
             converterProxy.getConvertedAmount(from, Currency.EUR);
             fail("Did not throw expected exception");
