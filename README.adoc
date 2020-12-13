@@ -11,3 +11,5 @@
 UrlJaxRsClient - JAX-RS client using only core Java apis
 
 SimpleSslClient - Jersey SSL client with NO SSL Configuration gunk needed
+
+OfficeVisitService.wsdl - not used, but a complete example of that service (in src/main/resources).
