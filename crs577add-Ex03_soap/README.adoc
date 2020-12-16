@@ -1,5 +1,8 @@
 = ForexClientIT.java (Ex3.1)
 
+This is not a complete project; it needs to be
+merged with the provided Ex03_Soap project.
+
 There should be an Integration Test for deployed applications.
 The project needs to be re-structured for proper Maven/Gradle use,
 with src/main/java for the app and src/test/java for Unit and
