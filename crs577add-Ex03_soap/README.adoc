@@ -2,6 +2,10 @@
 
 This is not a complete project; it needs to be
 merged with the provided Ex03_Soap project.
+And since that project doesn't use standard
+directory structure (Maven/Gradle/etc), you'd
+have to rearrange things a bit. So just look
+at the pieces here.
 
 There should be an Integration Test for deployed applications.
 The project needs to be re-structured for proper Maven/Gradle use,
@@ -12,4 +16,4 @@ it will only run Integration tests post-deploy with "mvn verify".
 
 See some of the projects in the crs936 repository at
 https://github.com/IanDarwin/CourseFiles936
-for working projects.
+for complete and working projects.
