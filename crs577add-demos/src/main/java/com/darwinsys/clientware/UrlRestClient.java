@@ -18,7 +18,9 @@ public class UrlRestClient {
 		final int recipeId = 4;
 		
 		// String concat, but ints cannot contain injection data
-		URL url = new URL(Constants.ACB_BASE_URL + "/" + recipeId);
+		URL url = new URL(Constants.ACB_BASE_URL
+				.replace("https", "http") // remove when 577 rewritten
+				+ "/" + recipeId);
 		final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.addRequestProperty("Accept", "application/json");
 		InputStream is = connection.getInputStream();
