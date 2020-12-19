@@ -1,5 +1,7 @@
 # /usr/bin/perl -w
 # simple Perl client to access Web service
+# from a previous version of the course -- needs
+# updating to the Currency or Airport SOAP service.
 
 $arg = @ARGV[0];
 
