@@ -164,6 +164,17 @@ public class InventoryEndpointImpl {
 
         return Response.accepted().build();
     }
+
+	@POST
+	@Path("/formbasedadd")
+	public String addFromForm(@FormParam("id")int productId, @FormParam("quantity")int quantity) {
+        if (productId <= 0 || quantity < 0) {
+        	throw new WebApplicationException(400);
+        }
+        boolean addItem = dao.addItem(productId, quantity);
+        return "<ok/>";
+    }
+	
     
     private InventoryDAO getDao() {
     	return dao;
