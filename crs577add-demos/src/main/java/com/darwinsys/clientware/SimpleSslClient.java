@@ -7,15 +7,16 @@ import javax.ws.rs.core.Response;
 
 /**
  * Show that we can go to SSL without all the SSLConfiguration goo.
- * This will NOT work on the incredibly ancient Java used
- * in Course 577 as of 2020, since the CAcerts file is years out of date.
+ * This may NOT work on the incredibly ancient Java used
+ * in Course 577 as of 2022, since the CAcerts file is 
+ * years out of date.
  */
 public class SimpleSslClient {
 
 	public static void main(String[] args) {
 
 		Client client = ClientBuilder.newClient();
-		String url = Constants.ACB_BASE_URL + "/" + 1;
+		String url = "https://darwinsys.com/";
 		System.out.println("Opening HTTPS URL " + url + " with NO SSL Config");
 		Builder request = client.target(url).request();
 		System.out.println("Invoking Builder Request " + request);
