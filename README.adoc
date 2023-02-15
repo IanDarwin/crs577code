@@ -1,5 +1,7 @@
 = crs577add: Extra code for https://learningtree.com/577[Learning Tree Course 577]
 
+DO NOT OPEN as a project; open individual crs577add* folders as projects!
+
 == Exercises
 
 * Ex03_soap - coming soon, only IT test for now
