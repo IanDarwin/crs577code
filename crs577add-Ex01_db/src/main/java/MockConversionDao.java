@@ -6,9 +6,9 @@ import java.math.BigDecimal;
  */
 public class MockConversionDao implements ConversionDao {
 
-    private final BidDecimal alwaysRate = new BigDecimal("1.1");
+    private final BigDecimal alwaysRate = new BigDecimal("1.1");
 
-    BigDecimal convert(Currency from, Currency to) {
+    public BigDecimal getRate(Currency from, Currency to) {
         return alwaysRate;
     }
 }
