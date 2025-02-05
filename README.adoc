@@ -1,8 +1,8 @@
 = crs577add: Extra code for https://learningtree.com/577[Learning Tree Course 577]
 
-DO NOT OPEN as a project; open individual crs577add* folders as projects!
+DO NOT OPEN as a project; open individual crs577add* folders as Eclipse projects!
 
-== Exercises
+== Exercises / Eclipse Projects
 
 * Ex03_soap - coming soon, only IT test for now
 * Ex04_FromWSDL - coming soon; skeleton only for now
